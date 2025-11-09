@@ -2,6 +2,7 @@ package 二分法;
 
 public class binarySearch{
     public  int  binarySearch(int[] a,int target){
+        int N;
         int i=0,j=a.length-1;
         while(i<=j){//i<j会漏掉m=i或m=j的情况
             int m=i+j>>1;//int m=(i+j)/2会使得结果在目标数据在数组偏右边时求到的索引爆int，应对符号位改变
