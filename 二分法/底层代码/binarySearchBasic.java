@@ -1,4 +1,5 @@
-package 二分法;
+package 二分法.底层代码;
+import 二分法.底层代码.binarySearch;
 
 public class binarySearchBasic{
     public static void main(String[] args) {

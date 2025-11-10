@@ -1,4 +1,4 @@
-package 二分法;
+package 二分法.底层代码;
 
 public class binarySearch{
     public  int  binarySearch(int[] a,int target){
