@@ -1,7 +1,9 @@
 package 二分法.底层代码;
 
 public class binarySearch{
-    public  int  binarySearch(int[] a,int target){
+    public binarySearch(){
+    }
+    public static int  binarySearch(int[] a, int target){
         int N;
         int i=0,j=a.length-1;
         while(i<=j){//i<j会漏掉m=i或m=j的情况
@@ -14,8 +16,8 @@ public class binarySearch{
                 return m;
             }
         }
-
-        return -(i-1);//若未找到，则说明目标值比a[i]大，i就是最合适的插入索引
+        System.out.println(i);
+        return -1;//若未找到，则说明目标值比a[i]大，i就是最合适的插入索引
 //        return -1;
     }
     public  int  binarySearchAlternative(int[] a,int target){
@@ -48,6 +50,42 @@ public class binarySearch{
             return i;
         }
         return -1;
+    }
+    public static int  binarySearch1(int[] a, int target){
+        int N;
+        int i=0,j=a.length-1;
+        while(i<=j){//i<j会漏掉m=i或m=j的情况
+            int m=i+j>>1;//int m=(i+j)/2会使得结果在目标数据在数组偏右边时求到的索引爆int，应对符号位改变
+            if(target<a[m]){
+                j=m-1;
+            }else if(target>a[m]){
+                i=m+1;
+            }else{
+                return m;
+            }
+        }
+        System.out.println(i);
+        return -(i+1);//若未找到，则说明目标值比a[i]大，i就是最合适的插入索引
+//        return -1;
+    }
+    public static int  binarySearchLeftmost1(int[] a, int target){
+        int N;
+        int i=0,j=a.length-1;
+        int candidate=-1;
+        while(i<=j){//i<j会漏掉m=i或m=j的情况
+            int m=i+j>>1;//int m=(i+j)/2会使得结果在目标数据在数组偏右边时求到的索引爆int，应对符号位改变
+            if(target<a[m]){
+                j=m-1;
+            }else if(target>a[m]){
+                i=m+1;
+            }else{
+                //记录候选位置
+                candidate=m;
+                j=m-1;
+            }
+        }
+        return candidate;
+//        return -1;
     }
 }
     
