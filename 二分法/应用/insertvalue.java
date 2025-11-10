@@ -14,6 +14,7 @@ public class insertvalue {
             b[insertvalue]=target;
             System.arraycopy(a,insertvalue,b,insertvalue+1,a.length-insertvalue);
             System.out.println(Arrays.toString(b));
+            //防伪标识
         }
     }
 }
