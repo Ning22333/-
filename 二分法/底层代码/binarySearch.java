@@ -69,7 +69,6 @@ public class binarySearch{
 //        return -1;
     }
     public static int  binarySearchLeftmost1(int[] a, int target){
-        int N;
         int i=0,j=a.length-1;
         int candidate=-1;
         while(i<=j){//i<j会漏掉m=i或m=j的情况
@@ -85,6 +84,21 @@ public class binarySearch{
             }
         }
         return candidate;
+//        return -1;
+    }
+    //最左最右索引优化
+    //若未找到返回大于等于目标的最靠左的元素位置
+    public static int  binarySearchLeftmost2(int[] a, int target){
+        int i=0,j=a.length-1;
+        while(i<=j){
+            int m=i+j>>1;
+            if(target<=a[m]){
+                j=m-1;
+            }else{
+                i=m+1;
+            }
+        }
+        return i;//若为最右索引，返回i-1，原因在于target<=a[m]时i必会+1;在这里不变正是因为变的是j而不是i
 //        return -1;
     }
 }
