@@ -22,6 +22,13 @@ public class test {
         for(Integer i:dynamicArray){
             System.out.println(i);
         }
-        
+        //删除元素
+        System.out.println("------------------------------");
+        int removed=dynamicArray.remove(2);
+        System.out.println(removed);
+        dynamicArray.foreach((element)->{
+            System.out.println(element);
+        });
+
     }
 }

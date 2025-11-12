@@ -21,6 +21,7 @@ public class DynamicArray implements Iterable<Integer> {
 
     }
     public void add(int index,int element){
+        checkandgrow();
         //第一步
         //将原数组的元素索引为index开始将size-index的数据拷贝到原数组从index+1位置以后的位置
 //        System.arraycopy(array,index,array,index+1,size-index);
@@ -35,6 +36,15 @@ public class DynamicArray implements Iterable<Integer> {
         }
         array[index]=element;
         size++;
+    }
+    //扩容操作
+    private void checkandgrow(){
+        if(size==capacity){
+            capacity=capacity+capacity>>1;
+            int[] newArray=new int[capacity];
+            System.arraycopy(array,0,newArray,0,size);
+            array=newArray;
+        }
     }
     public int get(int index){
         return array[index];
