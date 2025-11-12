@@ -13,7 +13,7 @@ public class test {
             System.out.println(dynamicArray.get(i));
         }
         System.out.println("-------------------------------");
-        //2.1匿名内部类完成遍历操作
+        //2.1匿名内部方法完成遍历操作
         dynamicArray.foreach((element)->{
             System.out.println(element);
         });
