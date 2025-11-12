@@ -1,6 +1,10 @@
 package 动态数组.底层代码;
 
-public class DynamicArray {
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.function.Consumer;
+
+public class DynamicArray implements Iterable<Integer> {
     public DynamicArray(){
 
     };
@@ -34,5 +38,39 @@ public class DynamicArray {
     }
     public int get(int index){
         return array[index];
+    }
+    //遍历局限性：foreach仅能完成遍历操作
+//    public void forEach(int index){
+//        for(int i=0;i<size;i++){
+//            System.out.print(array[i]);
+//        }
+//    }
+    //解决方法：匿名内部方法
+    public void foreach(Consumer<Integer> consumer){
+        for(int i=0;i<size;i++){
+            consumer.accept(array[i]);
+        }
+    }
+    @Override
+    public Iterator<Integer> iterator() {
+        return new Iterator<Integer>() {
+            int i=0;
+            @Override
+            public boolean hasNext() {
+                return i<size;
+            }
+
+            @Override
+            public Integer next() {
+                return array[i++];
+            }
+        };
+    }
+    //删除元素
+    public int remove(int index){
+        int removed=array[index];
+        System.arraycopy(array,index+1,array,index,size-index-1);
+        size--;
+        return removed;
     }
 }
