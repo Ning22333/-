@@ -1,10 +1,13 @@
 package 动态数组.底层代码;
 
 public class DynamicArray {
+    public DynamicArray(){
+
+    };
     private int size=0;
-    private int capacity=0;
+    private int capacity=8;
     private int[] array=new int[capacity];
-    public void addlast(int element){
+    public void addLast(int element){
         //第一步
 //        array[size]=element;
 //        size++;
@@ -28,5 +31,8 @@ public class DynamicArray {
         }
         array[index]=element;
         size++;
+    }
+    public int get(int index){
+        return array[index];
     }
 }
