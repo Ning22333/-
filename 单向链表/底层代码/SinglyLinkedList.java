@@ -69,5 +69,23 @@ public class SinglyLinkedList implements Iterable<Integer>{
         Node newNode=new Node(value,null);
         p.next=newNode;
     }
+    public Node findNode(int index){
+        int i=0;
+        for(Node p=head;p!=null;p=p.next,i++){
+            if(i==index){
+                return p;
+            }
+        }
+        return null;
+    }
+    public int get(int index){
+        Node node=findNode(index);
+        if(node==null){
+            throw new IllegalArgumentException(
+                    String.format("index [%d] 不合法%n",index));
+        }
+        return node.value;
+
+    }
 }
 

@@ -26,5 +26,9 @@ public class test {
         list1.loop1(element->{
             System.out.println(element);
         });
+        //查找测试
+        System.out.println("------------------------");
+        System.out.println(list1.findNode(2));;
+        System.out.println(list1.get(3));
     }
 }
