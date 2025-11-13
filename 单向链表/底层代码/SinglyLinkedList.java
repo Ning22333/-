@@ -51,5 +51,23 @@ public class SinglyLinkedList implements Iterable<Integer>{
             }
         };
     }
+    private  Node findLast(){
+        if(head==null){
+            return null;
+        }
+        Node p;
+        for (p=head;p.next!=null;p=p.next){
+        }
+        return p;
+    }
+    public void addLast(int value){
+        Node p=findLast();
+        if(p==null){
+            addFirst(value);
+            return;
+        }
+        Node newNode=new Node(value,null);
+        p.next=newNode;
+    }
 }
 

@@ -16,5 +16,15 @@ public class test {
         for(Integer i : list) {
             System.out.println(i);
         }
+        System.out.println("------------------------");
+        //尾插法测试
+        SinglyLinkedList list1 = new SinglyLinkedList();
+        list1.addLast(1);
+        list1.addLast(2);
+        list1.addLast(3);
+        list1.addLast(4);
+        list1.loop1(element->{
+            System.out.println(element);
+        });
     }
 }
