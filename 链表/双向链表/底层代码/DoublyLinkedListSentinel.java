@@ -1,6 +1,8 @@
 package 链表.双向链表.底层代码;
 
-public class DoublyLinkedListSentinel {
+import java.util.Iterator;
+
+public class DoublyLinkedListSentinel implements Iterable<Integer> {
     static class Node {
         Node prev;
         Node next;
@@ -33,6 +35,27 @@ public class DoublyLinkedListSentinel {
         }
         return null;
     }
+    public void  addFirst(int value){
+        insert(0,value);
+    }
+    public void removeFirst(){
+        remove(0);
+    }
+    public void addLast(int value){
+        Node newNode=new Node(tail.prev,value,tail);
+        Node prev=tail.prev;
+        prev.next=newNode;
+        tail.prev=newNode;
+    }
+    public void removeLast(){
+        Node removed=tail.prev;
+        if(removed==head){
+            throw illegalIndex(0);
+        }
+        Node prev=removed.prev;
+        tail.prev=prev;
+        prev.next=tail;
+    }
     public void insert(int index, int value){
         Node prev=findNode(index-1);
         if(prev==null){
@@ -44,6 +67,33 @@ public class DoublyLinkedListSentinel {
         next.prev=newNode;
     }
     public void remove(int index){
-        
+        Node prev=findNode(index-1);
+        //包含了删除的结点是头结点的情况
+        if(prev==null){
+            throw illegalIndex(index);
+        }
+        Node removed=prev.next;
+        //删除的结点是尾结点的情况
+        if(removed==tail){
+            throw illegalIndex(index);
+        }
+        prev.next=removed.next;
+        removed.next.prev=prev;
+    }
+    @Override
+    public Iterator<Integer> iterator() {
+        return new Iterator<Integer>() {
+            Node p=head;
+            @Override
+            public boolean hasNext() {
+                p=p.next;
+                return p!=tail;
+            }
+
+            @Override
+            public Integer next() {
+                return p.value;
+            }
+        };
     }
 }
