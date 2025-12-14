@@ -1,4 +1,4 @@
-package 单向链表.底层代码;
+package 链表.单向链表.底层代码;
 
 import java.util.Iterator;
 import java.util.function.Consumer;
