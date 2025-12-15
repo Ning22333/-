@@ -51,6 +51,19 @@ public class LinkedListReverse {
         head.next=null;//递归的方式对节点5进行修改，让节点5指向节点4........
         return newHead;//找到最后一个节点5
     }
+    //方法四：同方法三和方法四，实现顺序上的差异
+    public static ListNode reverse4(ListNode o1){
+        ListNode o2=o1.next;
+        ListNode n1=o1;
+        while(o2!=null){
+            o1.next=o2.next;
+            o2.next=n1;
+            n1=o2;
+            o2=o1.next;
+
+        }
+        return n1;
+    }
     public static void main(String[] args) {
         ListNode n1=null;
         ListNode n2=new ListNode(5,n1);
@@ -60,7 +73,7 @@ public class LinkedListReverse {
         ListNode n6=new ListNode(1,n5);
         System.out.println(n6);
 //        ListNode n7=new LinkedListReverse().reverse(n6);
-        ListNode n7=new LinkedListReverse().reverse3(n6);
+        ListNode n7=new LinkedListReverse().reverse4(n6);
         System.out.println(n7);
     }
 }
