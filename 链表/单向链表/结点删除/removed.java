@@ -44,14 +44,31 @@ public class removed {
         s2.next=s2.next.next;
         return n1.next;
     }
+    //链表去重
+    static public ListNode deleteDuplicates(ListNode head){
+        if(head==null||head.next==null){
+            return head;
+        }
+        ListNode p2=head;
+        ListNode p1;
+        while((p1=p2.next)!=null){
+            if(p1.val==p2.val){
+                p2.next=p2.next.next;
+            }else{
+                p2=p2.next;
+            }
+        }
+        return head;
+    }
     public static void main(String[] args) {
         ListNode ls=new ListNode(8,null);
         ls.next=new ListNode(7,null);
-        ls.next.next=new ListNode(6,null);
+        ls.next.next=new ListNode(7,null);
         ls.next.next.next=new ListNode(5,null);
         ls.next.next.next.next=new ListNode(7,null);
         System.out.println(ls);
 //        System.out.println(removeelement(ls,7));
+        System.out.println(deleteDuplicates(ls));
         System.out.println(removebyreindex(ls,2));
     }
 }
