@@ -60,7 +60,7 @@ public class removed {
         }
         return head;
     }
-    //
+    //2.
     static public ListNode deleteDuplicates(ListNode head){
         if(head==null||head.next==null){
             return head;
@@ -72,15 +72,51 @@ public class removed {
             return head;
         }
     }
+    //链表删除出现多次的元素
+    static public ListNode deleteallDuplicates1(ListNode head){
+        if(head==null||head.next==null){
+            return head;
+        }
+        if(head.val==head.next.val){
+            ListNode x=head.next.next;
+            while(x!=null&&x.val==head.val){
+                x=x.next;
+            }
+            return deleteallDuplicates(x);
+        }else{
+            head.next=deleteallDuplicates(head.next);
+            return head;
+        }
+    }
+    //2
+    static public ListNode deleteallDuplicates(ListNode head){
+        if(head==null||head.next==null){
+            return head;
+        }
+        ListNode s=new ListNode(0,head);
+        ListNode p1=head;
+        ListNode p2,p3;
+        while((p2=p1.next)!=null && (p3=p2.next)!=null){
+            if(p3.val==p2.val){
+                while((p3=p3.next)!=null&&p3.val==p2.val){
+
+                }
+                p1.next=p3;
+            }else{
+                p1=p1.next;
+            }
+        }
+        return s.next;
+    }
     public static void main(String[] args) {
         ListNode ls=new ListNode(8,null);
         ls.next=new ListNode(7,null);
         ls.next.next=new ListNode(7,null);
-        ls.next.next.next=new ListNode(5,null);
-        ls.next.next.next.next=new ListNode(7,null);
+        ls.next.next.next=new ListNode(7,null);
+        ls.next.next.next.next=new ListNode(5,null);
         System.out.println(ls);
 //        System.out.println(removeelement(ls,7));
-        System.out.println(deleteDuplicates(ls));
+        System.out.println(deleteallDuplicates(ls));
         System.out.println(removebyreindex(ls,2));
     }
 }
