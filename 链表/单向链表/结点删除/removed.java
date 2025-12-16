@@ -45,7 +45,7 @@ public class removed {
         return n1.next;
     }
     //链表去重
-    static public ListNode deleteDuplicates(ListNode head){
+    static public ListNode deleteDuplicates1(ListNode head){
         if(head==null||head.next==null){
             return head;
         }
@@ -59,6 +59,18 @@ public class removed {
             }
         }
         return head;
+    }
+    //
+    static public ListNode deleteDuplicates(ListNode head){
+        if(head==null||head.next==null){
+            return head;
+        }
+        if(head.val==head.next.val){
+            return deleteDuplicates(head.next);
+        }else{
+            head.next=deleteDuplicates(head.next);
+            return head;
+        }
     }
     public static void main(String[] args) {
         ListNode ls=new ListNode(8,null);
